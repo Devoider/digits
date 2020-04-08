@@ -1,4 +1,4 @@
-<img src="doc/landing.png">
+<img src="doc/landing.PNG">
 ## Installation
 
 First, [install Meteor](https://www.meteor.com/install).
