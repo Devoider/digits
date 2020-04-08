@@ -8,8 +8,12 @@ import AddNote from '../components/AddNote';
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Contact extends React.Component {
   removeItem(contactID) {
-    // console.log(contactID);
-    this.props.Contacts.remove(contactID);
+
+    /* eslint-disable-next-line */
+    if( confirm('Do you really want to delete this contact?')){
+      this.props.Contacts.remove(contactID);
+    }
+
   }
 
   render() {
