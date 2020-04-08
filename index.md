@@ -1,30 +1,9 @@
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/landing-page.png)
-
-Meteor-application-template-react is a sample Meteor 1.9 application that illustrates:
-
-  * A standard directory layout using 'imports/' as recommended in the [Meteor Guide](https://guide.meteor.com/structure.html)
-  * [Semantic UI React](https://react.semantic-ui.com/) for user interface.
-  * [Uniforms](https://uniforms.tools/) for form development.
-  * [alanning:roles](https://github.com/alanning/meteor-roles) to implement a special "Admin" user.
-  * Authorization, authentication, and registration using built-in Meteor packages.
-  * Initialization of users and data from a settings file.
-  * Alerts regarding success or failure of DB updates using [Sweet Alert](https://sweetalert.js.org/).
-  * Quality assurance using [ESLint](http://eslint.org) with packages to partially enforce the [Meteor Coding Standards](https://guide.meteor.com/code-style.html) and the [AirBnB Javascript Style Guide](https://github.com/airbnb/javascript).
-
-The goal of this template is to help you get quickly started doing Meteor development by providing a reasonable directory structure for development and deployment, a set of common extensions to the core framework, and boilerplate code to implement basic page display, navigation, forms, roles, and collection manipulation.
-
-To keep this codebase simple and small, some important capabilities are intentionally excluded from this template:
-
-  * Testing.
-  * Security (meteor-application-template-react enables the insecure packages)
-
-Examples of the these capabilities will be provided elsewhere.
-
+<img src="doc/landing.png">
 ## Installation
 
 First, [install Meteor](https://www.meteor.com/install).
 
-Second, go to [https://github.com/ics-software-engineering/meteor-application-template-react](https://github.com/ics-software-engineering/meteor-application-template-react), and click the "Use this template" button. Complete the dialog box to create a new repository that you own that is initialized with this template's files.
+Second, go to [https://github.com/Devoider/digits](https://github.com/Devoider/digits), and clone it to your own repository.
 
 Third, go to your newly created repository, and click the "Clone or download" button to download your new GitHub repo to your local file system.  Using [GitHub Desktop](https://desktop.github.com/) is a great choice if you use MacOS or Windows.
 
@@ -47,24 +26,32 @@ The first time you run the app, it will create some default users and data. Here
 ```
 meteor npm run start
 
-> meteor-application-template-react@ start /Users/philipjohnson/github/ics-software-engineering/meteor-application-template-react/app
+> meteor-application-template-react@ start C:\Users\drako\Documents\GitHub\digits\app
 > meteor --no-release-check --settings ../config/settings.development.json
 
-[[[[[ ~/github/ics-software-engineering/meteor-application-template-react/app ]]]]]
+[[[[[ C:\Users\drako\Documents\GitHub\digits\app ]]]]]
 
 => Started proxy.
 => Started MongoDB.
-I20180227-13:33:02.716(-10)? Creating the default user(s)
-I20180227-13:33:02.742(-10)?   Creating user admin@foo.com.
-I20180227-13:33:02.743(-10)?   Creating user john@foo.com.
-I20180227-13:33:02.743(-10)? Creating default data.
-I20180227-13:33:02.743(-10)?   Adding: Basket (john@foo.com)
-I20180227-13:33:02.743(-10)?   Adding: Bicycle (john@foo.com)
-I20180227-13:33:02.743(-10)?   Adding: Banana (admin@foo.com)
-I20180227-13:33:02.744(-10)?   Adding: Boogie Board (admin@foo.com)
+W20200407-16:52:04.193(-10)? (STDERR) Note: you are using a pure-JavaScript implementation of bcrypt.
+W20200407-16:52:04.236(-10)? (STDERR) While this implementation will work correctly, it is known to be
+W20200407-16:52:04.237(-10)? (STDERR) approximately three times slower than the native implementation.
+W20200407-16:52:04.238(-10)? (STDERR) In order to use the native implementation instead, run
+W20200407-16:52:04.239(-10)? (STDERR)
+W20200407-16:52:04.240(-10)? (STDERR)   meteor npm install --save bcrypt
+W20200407-16:52:04.241(-10)? (STDERR)
+W20200407-16:52:04.242(-10)? (STDERR) in the root directory of your application.
+I20200407-16:52:04.440(-10)? Creating the default user(s)
+I20200407-16:52:04.441(-10)?   Creating user admin@foo.com.
+I20200407-16:52:04.654(-10)?   Creating user john@foo.com.
+I20200407-16:52:04.853(-10)? Creating default data.
+I20200407-16:52:04.854(-10)?   Adding: Johnson (john@foo.com)
+I20200407-16:52:04.867(-10)?   Adding: Casanova (john@foo.com)
+I20200407-16:52:04.870(-10)?   Adding: Binsted (admin@foo.com)
 => Started your app.
 
 => App running at: http://localhost:3000/
+   Type Control-C twice to stop.
 ```
 
 
@@ -85,31 +72,9 @@ in the root directory of your application.
 
 On some operating systems (particularly Windows), installing bcrypt is much more difficult than implied by the above message. Bcrypt is only used in Meteor for password checking, so the performance implications are negligible until your site has very high traffic. You can safely ignore this warning without any problems during initial stages of development.
 
-### Note regarding "MongoError: not master and slaveOk=false":
-
-Intermittently, you may see the following error message in the console when the system starts up:
-
-```
-MongoError: not master and slaveOk=false
-     at queryCallback (/Users/philipjohnson/.meteor/packages/npm-mongo/.3.1.1.1mmptof.qcqo++os+web.browser+web.browser.legacy+web.cordova/npm/node_modules/mongodb-core/lib/cursor.js:248:25)
-     at /Users/philipjohnson/.meteor/packages/npm-mongo/.3.1.1.1mmptof.qcqo++os+web.browser+web.browser.legacy+web.cordova/npm/node_modules/mongodb-core/lib/connection/pool.js:532:18
-     at _combinedTickCallback (internal/process/next_tick.js:131:7)
-     at process._tickDomainCallback (internal/process/next_tick.js:218:9)
-```
-
-While irritating, this message appears to be harmless and [possibly related to a race condition between the development instance of Mongo and Meteor](https://github.com/meteor/meteor/issues/9026#issuecomment-330850366). By harmless, I mean that in most cases, the console goes on to display `App running at: http://localhost:3000/` and no problems occur during run time.
-
 ### Viewing the running app
 
 If all goes well, the template application will appear at [http://localhost:3000](http://localhost:3000).  You can login using the credentials in [settings.development.json](https://github.com/ics-software-engineering/meteor-application-template-react/blob/master/config/settings.development.json), or else register a new account.
-
-### ESLint
-
-You can verify that the code obeys our coding standards by running ESLint over the code in the imports/ directory with:
-
-```
-meteor npm run lint
-```
 
 ## Walkthrough
 
