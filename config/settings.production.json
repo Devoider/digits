@@ -1,5 +1,10 @@
 
 {
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb+srv://admin:YQB9OHmjyItPL4lt.mongodb.net/test?retryWrites=true&w=majority"
+    }
+  },
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
     { "email": "john@foo.com", "password": "changeme" }
